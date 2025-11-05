@@ -1,0 +1,26 @@
+name: autopainter_monet
+data:
+  dataset_root: data/processed/monet_sketches
+  image_size: 256
+  batch_size: 4
+  num_workers: 4
+  style_labels: ["monet"]
+  grayscale_mode: canny
+loss:
+  lambda_l1: 100.0
+  lambda_perceptual: 10.0
+  lambda_gan: 1.0
+  adversarial_mode: patch
+  feature_matching: true
+optim:
+  lr: 0.0002
+trainer:
+  epochs: 150
+  mixed_precision: true
+  save_every: 10
+  evaluate_every: 5
+  seed: 42
+generator_channels: 64
+discriminator_channels: 64
+multi_style: true
+perceptual_backbone: vgg19
